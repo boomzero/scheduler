@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: schedulertest
+  labels:
+      app: schedulertest 
+      phase: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: schedulertest
+  template:
+    metadata:
+      labels:
+        app: schedulertest
+        tier: backend
+        phase: test
+    spec:
+      containers:
+      - name: scheduler-container
+        image: boomzero/night-watch:scheduler
+        ports:
+        - containerPort: 3001
+        imagePullPolicy: Always
