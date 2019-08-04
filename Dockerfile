@@ -10,4 +10,4 @@ RUN yarn install
 
 EXPOSE $PORT
 
-ENTRYPOINT ["yarn", "start"]
+ENTRYPOINT ["yarn", "dev"]
