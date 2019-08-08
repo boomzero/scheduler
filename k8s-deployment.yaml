@@ -21,5 +21,15 @@ spec:
       - name: scheduler-container
         image: boomzero/night-watch:scheduler
         ports:
-        - containerPort: 3001
+        - containerPort: 3010
         imagePullPolicy: Always
+        env:
+        - name: DB_URI
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: MONGODB_URI
+        - name: MONGODB_DB_NAME
+          value: "scheduler"
+        - name: MONGODB_URI
+          value: "$(DB_URI)$(MONGODB_DB_NAME)"
