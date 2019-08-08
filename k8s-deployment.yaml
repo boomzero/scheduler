@@ -24,7 +24,7 @@ spec:
         - containerPort: 3010
         imagePullPolicy: Always
         env:
-        - name: DB_URI
+        - name: MONGODB_BASE_URI
           valueFrom:
             secretKeyRef:
               name: database
@@ -32,4 +32,4 @@ spec:
         - name: MONGODB_DB_NAME
           value: "scheduler"
         - name: MONGODB_URI
-          value: "$(DB_URI)$(MONGODB_DB_NAME)"
+          value: "$(MONGODB_BASE_URI)/$(MONGODB_DB_NAME)"
