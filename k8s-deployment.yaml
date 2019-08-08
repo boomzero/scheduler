@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: schedulertest
+  name: scheduler
   labels:
-      app: schedulertest 
+      app: scheduler
       phase: test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: schedulertest
+      app: scheduler
   template:
     metadata:
       labels:
-        app: schedulertest
+        app: scheduler
         tier: backend
         phase: test
     spec:
